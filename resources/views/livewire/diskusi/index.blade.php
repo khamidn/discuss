@@ -1,6 +1,6 @@
 <div class="flex flex-wrap">
     <div class="w-full md:w-2/12 fixed">
-        <div class="bg-white mt-5 px-2 py-2 rounded-lg border border-gray-300">
+        <div class="bg-white mt-3 px-2 py-2 rounded-lg border border-gray-300">
             <p class="font-normal py-2">Kategori</p>
 
             <div class="divide-y divide-gray-300">
@@ -26,7 +26,7 @@
         @endif
         
         <form>
-            <div class="flex flex-wrap px-8 py-2">
+            <div class="flex flex-wrap pl-8 py-2">
                 <textarea 
                     name="" 
                     id="" 
@@ -36,14 +36,14 @@
                     placeholder="Tulis Pertayaan anda"></textarea>
                 <p class="text-gray-500 text-xs py-2">(maks. 500 karakter)</p>
             </div>
-            <div class="grid justify-items-end px-8 py-2">
-                <button class="shadow bg-pink-500 hover:bg-pink-400 focus:shadow-outline focus:outline-none text-white font-bold rounded px-4 py-2 " type="button">
+            <div class="grid justify-items-end pl-8 py-2">
+                <button class="shadow focus:shadow-outline focus:outline-none text-white font-bold rounded px-4 py-2 @auth hover:bg-pink-400 bg-pink-500 cursor-allowed @else bg-pink-400 cursor-not-allowed @endauth" type="button">
                     Kirim
                 </button>
             </div>
         </form>
 
-        <div class="flex justify-between px-8 py-2 ">
+        <div class="flex justify-between pl-8 py-2 ">
             <div class="inline-block md:w-2/4 mr-6">
                 <input type="text" class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 py-2 px-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline" placeholder="Cari pertayaaan dalam forum">
             </div>
@@ -66,7 +66,7 @@
               </div>
         </div>
 
-        <div class="px-8 py-2">
+        <div class="pl-8 py-2">
             <div class="bg-white mt-2 px-2 py-2 rounded-lg border border-gray-300">
                 <div class="text-gray-500 text-sm">
                      <p>04 Oct 2019, 10:59 . Kategori</p>
@@ -91,7 +91,7 @@
             </div>
         </div>
 
-        <div class="px-8 py-2">
+        <div class="pl-8 py-2">
             <div class="bg-white mt-2 px-2 py-2 rounded-lg border border-gray-300">
                 <div class="text-gray-500 text-sm">
                      <p>04 Oct 2019, 10:59 . Kategori</p>
@@ -116,7 +116,7 @@
             </div>
         </div>
 
-        <div class="px-8 py-2">
+        <div class="pl-8 py-2">
             <div class="bg-white mt-2 px-2 py-2 rounded-lg border border-gray-300">
                 <div class="text-gray-500 text-sm">
                      <p>04 Oct 2019, 10:59 . Kategori</p>

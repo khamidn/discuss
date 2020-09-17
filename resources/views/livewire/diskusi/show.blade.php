@@ -20,7 +20,7 @@
                 <p class="text-gray-500 text-xs py-2">(maks. 500 karakter)</p>
             </div>
             <div class="grid justify-items-end px-4 py-2">
-                <button class="shadow bg-pink-500 hover:bg-pink-400 focus:shadow-outline focus:outline-none text-white font-bold rounded px-4 py-2 " type="button">
+                 <button class="shadow focus:shadow-outline focus:outline-none text-white font-bold rounded px-4 py-2 @auth hover:bg-pink-400 bg-pink-500 cursor-allowed @else bg-pink-400 cursor-not-allowed @endauth" type="button">
                     Kirim
                 </button>
             </div>
@@ -30,8 +30,8 @@
 
 <div class="flex flex-wrap justify-end">
     <div class="w-full md:w-9/12 sr-only md:not-sr-only">
-        <div class="px-8 py-2">
-            <div class="bg-white mt-2 px-2 py-2">
+        <div class="pl-8 py-2">
+            <div class="bg-white mt-2 py-2">
                 <div class="text-gray-500 text-sm">
                      <p>04 Oct 2019, 10:59 . Kategori</p>
                 </div>
@@ -54,7 +54,7 @@
                 </a>
             </div>
         </div>
-        <p class="font-normal px-8 mt-2">Diskusi Pengalaman Anda</p>
+        <p class="font-normal pl-8 mt-2">Diskusi Pengalaman Anda</p>
         @if (session('message'))
             <div class="px-4 py-2">
                 <div class="bg-blue-100 border border-blue-400 text-blue-700 px-2 py-2 rounded" role="alert">
@@ -63,7 +63,7 @@
             </div>
         @endif
         <form>
-            <div class="flex flex-wrap py-2 px-8">
+            <div class="flex flex-wrap py-2 pl-8">
                 <textarea 
                     name="" 
                     id="" 
@@ -73,8 +73,8 @@
                     placeholder="Tulis Pertayaan anda"></textarea>
                 <p class="text-gray-500 text-xs py-2">(maks. 500 karakter)</p>
             </div>
-            <div class="grid justify-items-end px-8 py-2">
-                <button class="shadow bg-pink-500 hover:bg-pink-400 focus:shadow-outline focus:outline-none text-white font-bold rounded px-4 py-2 " type="button">
+            <div class="grid justify-items-end pl-8 py-2">
+                 <button class="shadow focus:shadow-outline focus:outline-none text-white font-bold rounded px-4 py-2 @auth hover:bg-pink-400 bg-pink-500 cursor-allowed @else bg-pink-400 cursor-not-allowed @endauth" type="button">
                     Kirim
                 </button>
             </div>
