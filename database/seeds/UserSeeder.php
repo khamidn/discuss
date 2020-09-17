@@ -17,19 +17,34 @@ class UserSeeder extends Seeder
         	'email' => 'admin@email.com',
         	'email_verified_at' => now(),
         	'password' => bcrypt(12345678),
+        	'created_at' => now(),
 
         ]);
 
         $admin->assignRole('admin');
 
-        $user = User::create([
-        	'name' => 'User',
-        	'email' => 'user@email.com',
-        	'email_verified_at' => now(),
-        	'password' => bcrypt(12345678),
+        for($i=1; $i<=5; $i++) {
+        	$ahli =  User::create([
+                'name' => 'Ahli'.$i,
+                'email' => 'ahli'.$i.'@email.com',
+                'email_verified_at' => now(),
+                'password' => bcrypt('12345678'),
+                'created_at' => now(),
+            ]);
 
-        ]);
+           $ahli->assignRole('ahli');
 
-        $user->assignRole('user');
+
+           $user =  User::create([
+                'name' => 'User'.$i,
+                'email' => 'user'.$i.'@email.com',
+                'email_verified_at' => now(),
+                'password' => bcrypt('12345678'),
+                'created_at' => now(),
+            ]);
+
+           $user->assignRole('user');
+        }
+        
     }
 }
