@@ -1,6 +1,6 @@
 <div class="flex flex-wrap">
     <div class="w-full md:w-3/12 fixed">
-        <p class="font-normal px-4 mt-2">Forum Tanya Dokter</p>
+        <p class="text-black font-bold px-4 mt-2">Forum Tanya Dokter</p>
         @if (session('message'))
             <div class="px-4 py-2">
                 <div class="bg-blue-100 border border-blue-400 text-blue-700 px-2 py-2 rounded" role="alert">
@@ -36,7 +36,7 @@
                      <p>04 Oct 2019, 10:59 . Kategori</p>
                 </div>
                 <a href="" class="cursor-pointer">
-                    <div class="text-black">
+                    <div class="text-black hover:text-pink-600">
                         <span class="font-bold text-2xl">Contoh Pertayan yang diajukan oleh audiens</span>
                     </div>
                     <div class="flex justify-content-start">
@@ -54,7 +54,7 @@
                 </a>
             </div>
         </div>
-        <p class="font-normal pl-8 mt-2">Diskusi Pengalaman Anda</p>
+        <p class="text-black font-bold pl-8 mt-2">Diskusi Pengalaman Anda</p>
         @if (session('message'))
             <div class="px-4 py-2">
                 <div class="bg-blue-100 border border-blue-400 text-blue-700 px-2 py-2 rounded" role="alert">

@@ -1,7 +1,7 @@
 <div class="flex flex-wrap">
     <div class="w-full md:w-2/12 fixed">
         <div class="bg-white mt-3 px-2 py-2 rounded-lg border border-gray-300">
-            <p class="font-normal py-2">Kategori</p>
+            <p class="text-black font-bold py-2">Kategori</p>
 
             <div class="divide-y divide-gray-300">
                 @for ($i = 0; $i < 9; $i++)
@@ -16,7 +16,7 @@
 
 <div class="flex flex-wrap justify-end">
     <div class="w-full md:w-10/12">
-        <p class="font-normal px-8 mt-2">Forum Tanya Dokter</p>
+        <p class="text-black font-bold px-8 mt-2">Forum Tanya Dokter</p>
         @if (session('message'))
             <div class="px-4 py-2">
                 <div class="bg-blue-100 border border-blue-400 text-blue-700 px-2 py-2 rounded" role="alert">
@@ -72,7 +72,7 @@
                      <p>04 Oct 2019, 10:59 . Kategori</p>
                 </div>
                 <a href="/detail-diskusi" class="cursor-pointer">
-                    <div class="text-black">
+                    <div class="text-black hover:text-pink-600">
                         <span class="font-bold text-2xl">Contoh Pertayan yang diajukan oleh audiens</span>
                     </div>
                     <div class="flex justify-content-start">
@@ -97,7 +97,7 @@
                      <p>04 Oct 2019, 10:59 . Kategori</p>
                 </div>
                 <a href="/detail-diskusi" class="cursor-pointer">
-                    <div class="text-black">
+                    <div class="text-black hover:text-pink-600">
                         <span class="font-bold text-2xl">Contoh Pertayan yang diajukan oleh audiens</span>
                     </div>
                     <div class="flex justify-content-start">
@@ -122,7 +122,7 @@
                      <p>04 Oct 2019, 10:59 . Kategori</p>
                 </div>
                 <a href="/detail-diskusi" class="cursor-pointer">
-                    <div class="text-black">
+                    <div class="text-black hover:text-pink-600">
                         <span class="font-bold text-2xl">Contoh Pertayan yang diajukan oleh audiens</span>
                     </div>
                     <div class="flex justify-content-start">
