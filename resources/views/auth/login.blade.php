@@ -53,7 +53,7 @@
 
                         <div class="mb-0">
                             <div class="flex items-center justify-between">
-                                <button type="submit" class="bg-pink-600 hover:bg-blue-500 text-white font-bold py-2 px-4 rounded-md focus:outline-none focus:shadow-outline">
+                                <button type="submit" class="bg-pink-600 hover:bg-pink-500 text-white font-bold py-2 px-4 rounded-md focus:outline-none focus:shadow-outline">
                                     {{ __('Login') }}
                                 </button>
 

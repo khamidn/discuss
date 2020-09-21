@@ -1,5 +1,5 @@
 <div class="flex flex-wrap">
-    <div class="w-full md:w-3/12 fixed">
+    <div class="w-full md:w-2/12 fixed">
         <p class="text-black font-bold px-4 mt-2">Forum Tanya Dokter</p>
         @if (session('message'))
             <div class="px-4 py-2">
