@@ -20,10 +20,12 @@ class Index extends Component
 
         return view('livewire.diskusi.index', [
             'topics' => Topic::with('discussions')->get(),
-            'discussions' => $discussions->get(),
-        ])
-        	->extends('layouts.app')
-        	->section('content');
+            'discussions' => $discussions
+                            ->latest()                
+                            ->with('user')
+                            ->get(),
+            ])->extends('layouts.app')
+        	    ->section('content');
     }
 
     public function selectTopic($topicId)

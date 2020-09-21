@@ -17,11 +17,12 @@ class CreateDiscussionsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('parent_id')->nullable()->index();
             $table->unsignedBigInteger('topic_id')->index();
-            $table->morphs('discussable');
+            $table->unsignedBigInteger('user_id')->index();
             $table->text('content');
             $table->timestamps();
 
             $table->foreign('topic_id')->references('id')->on('topics');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('parent_id')->references('id')->on('discussions')->onDelete('cascade');
         });
     }

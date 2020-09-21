@@ -13,20 +13,20 @@ class Topic extends Model
 
     public function discussions()
     {
-        return $this->belongsTo(Discussion::class);
+        return $this->hasMany(Discussion::class);
     }
 
     // Mengambil parent induk dari setiap diskusi
 
-    public function getRootTopicDiscussion()
-    {
-        return $this->topic_discussions()->with(['discussable', 'parents'])->whereNull('parent_id')->get();
-    }
+    // public function getRootTopicDiscussion()
+    // {
+    //     return $this->topic_discussions()->with(['discussable', 'parents'])->whereNull('parent_id')->get();
+    // }
 
-    public function topic_discussions()
-    {
-        return $this->hasMany(TopicDiscussion::class);
-    }
+    // public function topic_discussions()
+    // {
+    //     return $this->hasMany(TopicDiscussion::class);
+    // }
 
     
 }

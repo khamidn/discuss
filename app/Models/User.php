@@ -40,6 +40,8 @@ class User extends Authenticatable
 
     public function discussions()
     {
-        return $this->belongsTo(Discussion::class);
+        return $this->hasMany(Discussion::class);
     }
+
+
 }

@@ -87,7 +87,7 @@
                                 <img src="https://via.placeholder.com/15x15" alt="avatar" class="rounded-full w-8 h-8">
                             </div>
                             <div class="text-gray-500 text-center p-2 ">
-                                Info Penanya: SY, Wanita, 1 Tahun
+                                Info Penanya: {{ $discussion->user->name }}, Wanita, 1 Tahun
                             </div>
                         </div>
                         <hr>

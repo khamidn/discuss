@@ -6,13 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Discussion extends Model
 {
-    public function topics()
+    public function topic()
     {
-        return $this->hasMany(Topic::class);
+        return $this->belongsTo(Topic::class);
     }
 
-    public function users()
+    public function user()
     {
-        return $this->hasMany(User::class);
+        return $this->belongsTo(User::class);
     }
 }
