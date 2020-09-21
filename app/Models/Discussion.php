@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Discussion extends Model
 {
+    protected $guarded = [];
+    
     public function topic()
     {
         return $this->belongsTo(Topic::class);
@@ -14,5 +16,10 @@ class Discussion extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function parents()
+    {
+        return $this->hasMany(Discussion::class, 'parent_id');
     }
 }

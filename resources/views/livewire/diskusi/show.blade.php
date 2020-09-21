@@ -33,25 +33,44 @@
         <div class="pl-8 py-2">
             <div class="bg-white mt-2 py-2">
                 <div class="text-gray-500 text-sm">
-                     <p>04 Oct 2019, 10:59 . Kategori</p>
+                     <p>{{ $discussion->created_at->diffForHumans() }} . {{ $discussion->topic->name }}</p>
                 </div>
-                <a href="" class="cursor-pointer">
-                    <div class="text-black hover:text-pink-600">
-                        <span class="font-bold text-2xl">Contoh Pertayan yang diajukan oleh audiens</span>
+                <div class="md:flex py-2">
+                    <div class="md:flex-shrink-0">
+                      <img class="rounded-full" src="https://via.placeholder.com/45x45" alt="Woman paying for a purchase">
                     </div>
-                    <div class="flex justify-content-start">
-                        <div class="items-center py-2">
-                            <img src="https://via.placeholder.com/15x15" alt="avatar" class="rounded-full w-8 h-8">
+                    <div class="mt-4 md:mt-0 md:ml-6">
+                      <div class="tracking-wide text-sm text-pink-600 font-bold">
+                        Info Penanya : {{ $discussion->user->name }}, Gender, 1 Tahun
+                      </div>
+                      <a href="#" class="block mt-1 text-lg leading-tight font-semibold text-gray-900 hover:underline">
+                          {{ $discussion->content }}
+                      </a>
+                    </div>
+                </div>
+                <hr>
+                @forelse ($discussion->parents as $parent)
+                    <div class="md:flex py-2">
+                        <div class="md:flex-shrink-0 ml-16">
+                        <img class="rounded-full" src="https://via.placeholder.com/45x45" alt="Woman paying for a purchase">
                         </div>
-                        <div class="text-gray-500 text-center p-2 ">
-                            Info Penanya: SY, Wanita, 1 Tahun
+                        <div class="mt-4 md:mt-0 md:ml-6">
+                            <div class="tracking-wide text-sm text-pink-600 font-bold">
+                                Dijawab oleh : {{ $parent->user->name }}, Gender, 1 Tahun
+                            </div>
+                            <p class="mt-2 text-gray-600">
+                                {{ $parent->content}}
+                            </p>
                         </div>
                     </div>
-                    <hr>
-                    <div class="text-gray-700 text-left px-8 py-2 ">
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                @empty
+                    <div class="py-2">
+                        <div class="bg-blue-100 border border-blue-400 text-blue-700 px-2 py-2 rounded" role="alert">
+                            <span class="block sm:inline">Belum ada jawaban pada pertayaan ini.</span>
+                        </div>
                     </div>
-                </a>
+                @endforelse
+                
             </div>
         </div>
         <p class="text-black font-bold pl-8 mt-2">Diskusi Pengalaman Anda</p>

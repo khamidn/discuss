@@ -3,11 +3,13 @@
 namespace App\Http\Livewire\Diskusi;
 
 use Livewire\Component;
+use Illuminate\Support\Facades\Auth;
 use App\Models\{ Topic, Discussion };
 
 class Index extends Component
 {
     public $topic;
+    public $content;
 
     public function render()
     {
@@ -23,6 +25,7 @@ class Index extends Component
             'discussions' => $discussions
                             ->latest()                
                             ->with('user')
+                            ->with('topic')
                             ->get(),
             ])->extends('layouts.app')
         	    ->section('content');
@@ -32,5 +35,23 @@ class Index extends Component
     {
         $this->topic = $topicId;
         // $this->resetPage();
+    }
+
+    public function newDiscussion($topicId)
+    {
+        $this->validate([
+            'content' => 'required|max:500',
+        ]);
+        
+        $data = array(
+            'topic_id' => $topicId,
+            'content' => $this->content,
+            'user_id' => Auth::id(),
+        );
+
+        Discussion::create($data);
+        $this->content = "";
+        session()->flash('message', 'Selamat, anda berhasil menambahkan diskusi baru');
+        
     }
 }
