@@ -1,34 +1,4 @@
-<div class="flex flex-wrap">
-    <div class="w-full md:w-2/12 fixed">
-        <p class="text-black font-bold px-4 mt-2">Forum Tanya Dokter</p>
-        @if (session('message'))
-            <div class="px-4 py-2">
-                <div class="bg-blue-100 border border-blue-400 text-blue-700 px-2 py-2 rounded" role="alert">
-                    <span class="block sm:inline">Pertayaan anda telah terkirim.</span>
-                </div>
-            </div>
-        @endif
-        <form>
-            <div class="flex flex-wrap py-2 px-4">
-                <textarea 
-                    name="" 
-                    id="" 
-                    cols="30" 
-                    rows="10"
-                    class="focus:outline-none focus:shadow-outline border shadow border-gray-300 rounded-md block w-full px-2 py-2" 
-                    placeholder="Tulis Pertayaan anda"></textarea>
-                <p class="text-gray-500 text-xs py-2">(maks. 500 karakter)</p>
-            </div>
-            <div class="grid justify-items-end px-4 py-2">
-                 <button class="shadow focus:shadow-outline focus:outline-none text-white font-bold rounded px-4 py-2 @auth hover:bg-pink-400 bg-pink-500 cursor-allowed @else bg-pink-400 cursor-not-allowed @endauth" type="button">
-                    Kirim
-                </button>
-            </div>
-        </form>
-    </div>
-</div>
-
-{{-- <div class="flex flex-wrap justify-end">
+<div class="flex flex-wrap justify-end">
     <div class="w-full md:w-9/12 sr-only md:not-sr-only">
         <div class="pl-8 py-2">
             <div class="bg-white mt-2 py-2">
@@ -76,15 +46,33 @@
         </div>
         <p class="text-black font-bold pl-8 mt-2">Diskusi Pengalaman Anda</p>
         @if (session('message'))
-            <div class="px-4 py-2">
-                <div class="bg-blue-100 border border-blue-400 text-blue-700 px-2 py-2 rounded" role="alert">
-                    <span class="block sm:inline">Pertayaan anda telah terkirim.</span>
-                </div>
+        <div class="pl-8 py-2">
+            <div class="bg-blue-100 border border-blue-400 text-blue-700 px-2 py-2 rounded" role="alert">
+                <span class="block sm:inline">Jawaban anda telah terkirim.</span>
             </div>
-        @endif
-            <livewire:diskusi.reply :parentId="$discussion->id" :topicId="$discussion->topic_id"/>
+        </div>
+    @endif
+
+        <form wire:submit.prevent="replyDiscussion( {{ $parentId }}, {{ $topicId }} )">
+            <div class="flex flex-wrap py-2 pl-8">
+                <textarea 
+                    wire:model="content"
+                    cols="30" 
+                    rows="10"
+                    class="focus:outline-none focus:shadow-outline border shadow border-gray-300 rounded-md block w-full px-2 py-2" 
+                    placeholder="Tulis Pertayaan anda"></textarea>
+                <p class="text-gray-500 text-xs py-2">(maks. 501 karakter)</p>
+            </div>
+            <div class="grid justify-items-end pl-8 py-2">
+                 <button class="shadow focus:shadow-outline focus:outline-none text-white font-bold rounded px-4 py-2 @auth hover:bg-pink-400 bg-pink-500 cursor-allowed @else bg-pink-400 cursor-not-allowed @endauth" >
+                    Kirim
+                </button>
+            </div>
+        </form>
     </div>
-</div> --}}
+</div>
 
-<livewire:diskusi.reply :parentId="$discussion->id" :topicId="$discussion->topic_id"/>
 
+<div>
+    
+</div>

@@ -34,7 +34,6 @@ class Index extends Component
     public function selectTopic($topicId)
     {
         $this->topic = $topicId;
-        // $this->resetPage();
     }
 
     public function newDiscussion($topicId)
@@ -50,8 +49,12 @@ class Index extends Component
         );
 
         Discussion::create($data);
+
         $this->content = "";
+
         session()->flash('message', 'Selamat, anda berhasil menambahkan diskusi baru');
         
     }
+
+    
 }

@@ -92,9 +92,9 @@
                               <div class="tracking-wide text-sm text-pink-600 font-bold">
                                 Info Penanya : {{ $discussion->user->name }}, Gender, 1 Tahun
                               </div>
-                              <a href="#" class="block mt-1 text-lg leading-tight font-semibold text-gray-900 hover:underline">
+                              <p class="block mt-1 text-lg leading-tight font-semibold text-gray-900">
                                   {{ $discussion->content }}
-                              </a>
+                              </p>
                             </div>
                         </div>
                         <hr>
