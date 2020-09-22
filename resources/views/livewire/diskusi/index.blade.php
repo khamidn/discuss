@@ -23,6 +23,7 @@
         </div>
     </div>
 
+
     <div class="w-full md:w-10/12 px-4">
         <p class="text-black font-bold pl-8 mt-2">Forum Tanya Dokter</p>
         @if (session('message'))
@@ -32,7 +33,7 @@
                 </div>
             </div>
         @endif
-        
+       
         <form wire:submit.prevent="newDiscussion({{ $topic }})">
 
             <div class="flex flex-wrap pl-8 py-2">
@@ -49,12 +50,46 @@
                     @enderror
             </div>
 
-            <div class="grid justify-items-end pl-8 py-2">
-                <button class="shadow focus:shadow-outline focus:outline-none text-white font-bold rounded px-4 py-2 @auth hover:bg-pink-500 bg-pink-600 cursor-allowed @else bg-pink-500 cursor-not-allowed @endauth" type="submit">
-                    Kirim
-                </button>
+            <div class="flex justify-between pl-8 py-2">
+                <div class="">
+                    {{-- <button type="button" class="add_more border bg-pink-600 hover:bg-pink-500 text-white font-bold py-2 px-4 rounded-full">Tambahkan Gambar</button> --}}
+
+                        <div class="w-full" x-data='app()' x-init="init()">
+                            <form>
+                                <h3>Gambar (<span x-text="imageCount()"></span>)</h3>
+                                <template x-for="(image, i) in images" :key="i">
+                                    <div class="mt-3">
+                                    <label><span x-text="i+1"></span>. Gambar</label>
+                                    <div class="">
+                                        <input type="file" class="" x-model="image.name">
+                                        <div class="">
+                                            <span class="font-weigh-normal">
+                                            <button type="button" @click.prevent="removeImage(i)" class="border bg-pink-600 hover:bg-pink-500 text-white font-bold py-2 px-4 rounded">hapus</button>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </template>
+                                
+                                    <button type="button" @click.prevent="addImage()" class="border bg-pink-600 hover:bg-pink-500 text-white font-bold py-2 px-4 rounded-full" :class="{'hidden' : images.length > 2 }" x-ref="addImageButton">Tambah Gambar</button>
+                                
+                            </form>
+                        </div>
+                       
+                    
+                </div>
+                <div class="">
+                    <button class="shadow focus:shadow-outline focus:outline-none text-white font-bold rounded px-4 py-2 @auth hover:bg-pink-500 bg-pink-600 cursor-allowed @else bg-pink-500 cursor-not-allowed @endauth" type="submit">
+                        Kirim
+                    </button>
+                </div>
+                
             </div>
+
         </form>
+             
+              
+            
 
         <div class="flex justify-between pl-8 py-2 ">
             <div class="inline-block md:w-2/4 mr-6">
@@ -113,4 +148,104 @@
 
     </div>
 </div>
+
+
+<section class="flex flex-wrap p-4 h-full items-center">
+
+    <div 
+        class="fixed top-0 left-0 w-full h-full flex items-center shadow-lg overflow-y-auto" 
+        style="background-color: rgba(0,0,0,0.5)" 
+        x-show="showModal"
+    >
+
+        <div 
+            class="bg-white w-11/12 md:max-w-md mx-auto rounded shadow-lg py-4 text-left px-6" 
+            x-show="showModal" 
+            @click.away="showModal = false" 
+            x-transition:enter="ease-out duration-300" 
+            x-transition:enter-start="opacity-0 scale-90" 
+            x-transition:enter-end="opacity-100 scale-100" 
+            x-transition:leave="ease-in duration-300" 
+            x-transition:leave-start="opacity-100 scale-100" 
+            x-transition:leave-end="opacity-0 scale-90"
+        >
+
+            <div class="flex justify-between items-center pb-3">
+                <p class="text-2xl font-bold">Masukkan Gambar</p>
+                <div class="cursor-pointer z-50" @click="showModal = false">
+                    <svg class="fill-current text-black" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
+                        <path d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z"></path>
+                    </svg>
+                </div>
+            </div>
+            
+            {{-- <div class="flex justify-between pl-8 py-2 ">
+                
+            </div> --}}
+            {{-- <div class="w-full max-w-2xl p-8 mx-auto bg-pink-600 rounded-lg">
+                <div class="" x-data="imageData()">
+                  <div x-show="previewUrl == ''">
+                    <p class="text-center uppercase text-bold">
+                      <label for="thumbnail" class="cursor-pointer">
+                        Upload a file
+                      </label>
+                      <input type="file" name="thumbnail" id="thumbnail" class="hidden" @change="updatePreview()">
+                    </p>
+                  </div>
+                  <div x-show="previewUrl !== ''">
+                    <img :src="previewUrl" alt="" class="rounded w-32 h-32">
+                    <div class="">
+                      <button type="button" class="" @click="clearPreview()">change</button>
+                    </div>
+                  </div>
+                </div>
+            </div> --}}
+
+            <div class="flex justify-end pt-2">
+                <button class="px-4 bg-transparent p-3 rounded-lg text-indigo-500 hover:bg-gray-100 hover:text-indigo-400 mr-2" @click="alert('Additional Action');">Action</button>
+                <button class="modal-close px-4 bg-indigo-500 p-3 rounded-lg text-white hover:bg-indigo-400" @click="showModal = false">Close</button>
+            </div>
+
+        </div>
+        
+    </div>
+
+</section>
+{{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script>
+    
+    $(document).ready(function() {
+        $('.add_more').click(function(e) {
+            e.preventDefault();
+            $(this).before("<input class='order bg-pink-600 hover:bg-pink-500 text-white font-bold py-2 px-4 m-2 rounded-full' name='file[]' type='file'/>")
+        })
+    }) --}}
+<script>
+class Image {
+  constructor() {
+    this.name = '';
+  }
+}
+
+function app() {
+  return {
+   
+    images: [],
+    init() {
+      //do init stuff here
+    },
+    imageCount() {
+      return this.images.length;
+    },
+    addImage() {
+      console.log('Add');
+      this.images.push(new Image());     
+    },
+    removeImage(index) {
+      this.images.splice(index, 1);
+    },
+  }
+}
+
+</script>
 

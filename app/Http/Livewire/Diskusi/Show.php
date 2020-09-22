@@ -9,7 +9,6 @@ class Show extends Component
 {
     public $discussion; 
 
-
     public function mount(Discussion $discussion)
     {
         $this->discussion = $discussion;

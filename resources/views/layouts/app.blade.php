@@ -3,7 +3,10 @@
 
     @include('layouts.partials.head')
 
-    <body class="bg-white">
+    <body 
+        class="bg-white font-sans" 
+        x-data="{ 'showModal' : false }"
+        @kedown.escape="showModal = false" x-cloak>
         
         <livewire:navbar/>
 
@@ -16,7 +19,5 @@
         </div>
 
     @livewireScripts
-
-    
     </body>
 </html>
