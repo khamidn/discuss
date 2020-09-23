@@ -49,42 +49,44 @@
                         </div>
                     @enderror
             </div>
-
-            <div class="flex justify-between pl-8 py-2">
-                <div class="">
-                    {{-- <button type="button" class="add_more border bg-pink-600 hover:bg-pink-500 text-white font-bold py-2 px-4 rounded-full">Tambahkan Gambar</button> --}}
-
-                        <div class="w-full" x-data='app()' x-init="init()">
-                            <form>
-                                <h3>Gambar (<span x-text="imageCount()"></span>)</h3>
-                                <template x-for="(image, i) in images" :key="i">
-                                    <div class="mt-3">
-                                    <label><span x-text="i+1"></span>. Gambar</label>
-                                    <div class="">
-                                        <input type="file" class="" x-model="image.name">
-                                        <div class="">
-                                            <span class="font-weigh-normal">
-                                            <button type="button" @click.prevent="removeImage(i)" class="border bg-pink-600 hover:bg-pink-500 text-white font-bold py-2 px-4 rounded">hapus</button>
-                                            </span>
-                                        </div>
-                                    </div>
-                                    </div>
-                                </template>
-                                
-                                    <button type="button" @click.prevent="addImage()" class="border bg-pink-600 hover:bg-pink-500 text-white font-bold py-2 px-4 rounded-full" :class="{'hidden' : images.length > 2 }" x-ref="addImageButton">Tambah Gambar</button>
-                                
-                            </form>
+            <div class="grid grid-cols-3 gap-4 py-2 pl-8" x-data='app()' x-init="init()">
+                <template x-for="(image, i) in images" :key="i">
+                    <div class="cols-span-3">
+                        <div class="mr-4">
+                            <input type="file" class="text-gray-800 font-normal" x-model="image.name">
                         </div>
+                        <div class="mt-2">
+                            <button @click.prevent="removeImage(i)" class="bg-gray-300 hover:bg-gray-400 py-2 px-4 rounded inline-flex items-center">    
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash-2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg>
+                            </button>
+                        </div>
+                        
+                    </div>
+                </template>
+
+                <div class="cols-span-3">
+                    <button type="button" @click.prevent="addImage()" class="border bg-pink-600 hover:bg-pink-500 text-white font-bold py-2 px-4 mr-3 rounded" :class="{'hidden' : images.length > 2 }" x-ref="addImageButton">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-image"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+                    </button>
+
+                    <button class="shadow focus:shadow-outline focus:outline-none text-white font-bold rounded px-4 py-2 @auth hover:bg-pink-500 bg-pink-600 cursor-allowed @else bg-pink-500 cursor-not-allowed @endauth" type="submit">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-send"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                    </button>
+                </div>
+            </div>
+            {{-- <div class="grid grid-cols-6 gap-4 pl-8 py-2 place-items-end items-center">
+                <div class="col-span-5">
+                        button add image
                        
                     
                 </div>
-                <div class="">
+                <div class="col-span-1 py-2">
                     <button class="shadow focus:shadow-outline focus:outline-none text-white font-bold rounded px-4 py-2 @auth hover:bg-pink-500 bg-pink-600 cursor-allowed @else bg-pink-500 cursor-not-allowed @endauth" type="submit">
                         Kirim
                     </button>
                 </div>
                 
-            </div>
+            </div> --}}
 
         </form>
              
@@ -245,7 +247,7 @@ function app() {
       this.images.splice(index, 1);
     },
   }
-}
+};
 
 </script>
 
