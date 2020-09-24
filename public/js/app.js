@@ -37277,6 +37277,32 @@ module.exports = function(module) {
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
+document.onreadystatechange = function () {
+  if (document.readyState === 'complete') {
+    window.livewire.on('file_upload_start', function () {
+      try {
+        var file = event.target.files[0];
+
+        if (file) {
+          console.log(file);
+          var reader = new FileReader();
+
+          reader.onloadend = function () {
+            window.livewire.emit('file_upload_end', {
+              data: reader.result,
+              filename: file.name
+            });
+          };
+
+          reader.readAsDataURL(file);
+        }
+      } catch (e) {
+        console.log(e);
+      }
+    });
+  }
+};
+
 /***/ }),
 
 /***/ "./resources/js/bootstrap.js":
@@ -37331,8 +37357,8 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\xampp\htdocs\Goalkes\discuss\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\Goalkes\discuss\resources\css\main.css */"./resources/css/main.css");
+__webpack_require__(/*! /Users/goalkes/Desktop/Projects/discuss/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Users/goalkes/Desktop/Projects/discuss/resources/css/main.css */"./resources/css/main.css");
 
 
 /***/ })

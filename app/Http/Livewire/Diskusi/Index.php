@@ -3,13 +3,37 @@
 namespace App\Http\Livewire\Diskusi;
 
 use Livewire\Component;
+use Livewire\WithFileUploads;
 use Illuminate\Support\Facades\Auth;
 use App\Models\{ Topic, Discussion };
 
 class Index extends Component
 {
+    use WithFileUploads;
+
     public $topic;
     public $content;
+    public $fields = 0;
+    public $images;
+
+    public $photo = [];
+
+    public function mount()
+    {
+        $this->images = [];
+        
+    }
+    public function handleAddField()
+    {
+        $this->fields+=1;
+    }
+
+    public function handleDetachField()
+    {
+        $this->fields-=1;
+    }
+
+
 
     public function render()
     {
@@ -31,6 +55,8 @@ class Index extends Component
         	    ->section('content');
     }
 
+    
+
     public function selectTopic($topicId)
     {
         $this->topic = $topicId;
@@ -38,21 +64,31 @@ class Index extends Component
 
     public function newDiscussion($topicId)
     {
+
         $this->validate([
-            'content' => 'required|max:500',
+            'photo' => 'image|max:1024',
         ]);
+        // $this->validate([
+        //     'content' => 'required|max:500',
+        // ]);
+        // foreach($this->gambars as $key => $gambar) {
+        //     $this->gambars[$key]=$gambar->store('images');
+        // }
+
         
+
+
         $data = array(
             'topic_id' => $topicId,
             'content' => $this->content,
             'user_id' => Auth::id(),
         );
 
-        Discussion::create($data);
+        // Discussion::create($data);
 
-        $this->content = "";
+        // $this->content = "";
 
-        session()->flash('message', 'Selamat, anda berhasil menambahkan diskusi baru');
+        // session()->flash('message', 'Selamat, anda berhasil menambahkan diskusi baru');
         
     }
 

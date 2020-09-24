@@ -22,4 +22,10 @@ class Discussion extends Model
     {
         return $this->hasMany(Discussion::class, 'parent_id');
     }
+
+    public function images()
+    {
+        return $this->hasMany(Image::class);
+    }
+
 }

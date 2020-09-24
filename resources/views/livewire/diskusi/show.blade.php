@@ -20,8 +20,8 @@
                 <p class="text-gray-500 text-xs py-2">(maks. 500 karakter)</p>
             </div>
             <div class="grid justify-items-end px-4 py-2">
-                 <button class="shadow focus:shadow-outline focus:outline-none text-white font-bold rounded px-4 py-2 @auth hover:bg-pink-400 bg-pink-500 cursor-allowed @else bg-pink-400 cursor-not-allowed @endauth" type="button">
-                    Kirim
+                <button class="shadow focus:shadow-outline focus:outline-none text-white font-bold rounded px-4 py-2 @auth hover:bg-pink-500 bg-pink-600 cursor-allowed @else bg-pink-500 cursor-not-allowed @endauth" @auth enabled @else disabled @endauth type="submit">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-send"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
                 </button>
             </div>
         </form>
