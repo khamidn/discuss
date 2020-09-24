@@ -23,7 +23,6 @@
         </div>
     </div>
 
-
     <div class="w-full md:w-10/12 px-4">
         <p class="text-black font-bold pl-8 mt-2">Forum Tanya Dokter</p>
         @if (session('message'))
@@ -76,15 +75,16 @@
                 </div>
             </div>
             
-
         </form>
              
-              
-            
-
         <div class="flex justify-between pl-8 py-2 ">
             <div class="inline-block md:w-2/4 mr-6">
-                <input type="text" class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 py-2 px-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline" placeholder="Cari pertayaaan dalam forum">
+                <input 
+                    type="text"
+                    wire:model="search"
+                    class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 py-2 px-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
+                    placeholder="Cari pertayaaan dalam forum"
+                   >
             </div>
             <div class="md:flex md:items-center md:w-2/4">
                 <div class="md:w-1/3">
@@ -136,8 +136,8 @@
             </div>
         @endforelse
         
-
     </div>
+
 </div>
 
 
@@ -146,13 +146,13 @@
     <div 
         class="fixed top-0 left-0 w-full h-full flex items-center shadow-lg overflow-y-auto" 
         style="background-color: rgba(0,0,0,0.5)" 
-        x-show="showModal"
+        x-show="modalSearch"
     >
 
         <div 
-            class="bg-white w-11/12 md:max-w-md mx-auto rounded shadow-lg py-4 text-left px-6" 
-            x-show="showModal" 
-            @click.away="showModal = false" 
+            class="bg-white w-10/12 md:max-w-md mx-auto rounded shadow-lg py-4 text-left px-6" 
+            x-show="modalSearch" 
+            @click.away="modalSearch = false" 
             x-transition:enter="ease-out duration-300" 
             x-transition:enter-start="opacity-0 scale-90" 
             x-transition:enter-end="opacity-100 scale-100" 
@@ -162,40 +162,26 @@
         >
 
             <div class="flex justify-between items-center pb-3">
-                <p class="text-2xl font-bold">Masukkan Gambar</p>
-                <div class="cursor-pointer z-50" @click="showModal = false">
+                <p class="text-2xl font-bold">SEARCH</p>
+                <div class="cursor-pointer z-50" @click="modalSearch = false">
                     <svg class="fill-current text-black" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
                         <path d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z"></path>
                     </svg>
                 </div>
             </div>
             
-            {{-- <div class="flex justify-between pl-8 py-2 ">
-                
-            </div> --}}
-            {{-- <div class="w-full max-w-2xl p-8 mx-auto bg-pink-600 rounded-lg">
-                <div class="" x-data="imageData()">
-                  <div x-show="previewUrl == ''">
-                    <p class="text-center uppercase text-bold">
-                      <label for="thumbnail" class="cursor-pointer">
-                        Upload a file
-                      </label>
-                      <input type="file" name="thumbnail" id="thumbnail" class="hidden" @change="updatePreview()">
-                    </p>
-                  </div>
-                  <div x-show="previewUrl !== ''">
-                    <img :src="previewUrl" alt="" class="rounded w-32 h-32">
-                    <div class="">
-                      <button type="button" class="" @click="clearPreview()">change</button>
-                    </div>
-                  </div>
-                </div>
-            </div> --}}
-
-            <div class="flex justify-end pt-2">
-                <button class="px-4 bg-transparent p-3 rounded-lg text-indigo-500 hover:bg-gray-100 hover:text-indigo-400 mr-2" @click="alert('Additional Action');">Action</button>
-                <button class="modal-close px-4 bg-indigo-500 p-3 rounded-lg text-white hover:bg-indigo-400" @click="showModal = false">Close</button>
+            <div class="flex w-full items-center">
+                <p class="text-gray-600"></p>
+                <input 
+                    type="text"
+                    class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 py-2 px-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
+                    placeholder="Cari pertayaaan dalam forum"
+                >
             </div>
+           
+            
+
+
 
         </div>
         

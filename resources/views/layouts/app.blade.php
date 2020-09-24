@@ -5,8 +5,8 @@
 
     <body 
         class="bg-white font-sans" 
-        x-data="{ 'showModal' : false }"
-        @kedown.escape="showModal = false" x-cloak>
+        x-data="{ 'modalSearch' : false }"
+        @kedown.escape="modalSearch = false" x-cloak>
         
         <livewire:navbar/>
 
