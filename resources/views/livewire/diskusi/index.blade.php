@@ -53,7 +53,10 @@
                 @for($i = 0; $i < $fields; $i++) 
                     <div class="cols-span-3">
                         <div class="mr-4">
-                            <input type="file" class="mr-3" wire:change="$emit('file_upload_start')"/>
+                            <input 
+                            type="file" 
+                            class="mr-3" 
+                            wire:change.prevent="$emit('file_upload_start')"/>
                         </div>
                         <div class="mt-2">
                             <button type="button" wire:click="handleDetachField" class="bg-gray-300 hover:bg-gray-400 py-2 px-4 rounded inline-flex items-center">    
@@ -81,7 +84,7 @@
             <div class="inline-block md:w-2/4 mr-6">
                 <input 
                     type="text"
-                    wire:model="search"
+                    @click="modalSearch = true"
                     class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 py-2 px-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
                     placeholder="Cari pertayaaan dalam forum"
                    >
@@ -170,18 +173,7 @@
                 </div>
             </div>
             
-            <div class="flex w-full items-center">
-                <p class="text-gray-600"></p>
-                <input 
-                    type="text"
-                    class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 py-2 px-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
-                    placeholder="Cari pertayaaan dalam forum"
-                >
-            </div>
-           
-            
-
-
+            <livewire:diskusi.search />
 
         </div>
         

@@ -37275,33 +37275,28 @@ module.exports = function(module) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
-
-document.onreadystatechange = function () {
-  if (document.readyState === 'complete') {
-    window.livewire.on('file_upload_start', function () {
-      try {
-        var file = event.target.files[0];
-
-        if (file) {
-          console.log(file);
-          var reader = new FileReader();
-
-          reader.onloadend = function () {
-            window.livewire.emit('file_upload_end', {
-              data: reader.result,
-              filename: file.name
-            });
-          };
-
-          reader.readAsDataURL(file);
-        }
-      } catch (e) {
-        console.log(e);
-      }
-    });
-  }
-};
+__webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js"); // document.onreadystatechange = () => {
+//     if (document.readyState === 'complete') {
+//         window.livewire.on('file_upload_start', () => {
+//             try {
+//                 let file = event.target.files[0];
+//                 if (file) {
+//                     console.log(file);
+//                     let reader = new FileReader();
+//                     reader.onloadend = () => {
+//                         window.livewire.emit('file_upload_end', {
+//                             data: reader.result,
+//                             filename: file.name,
+//                         })
+//                     }
+//                     reader.readAsDataURL(file)
+//                 }
+//             } catch (e) {
+//                 console.log(e);
+//             }
+//         })
+//     }
+// }
 
 /***/ }),
 

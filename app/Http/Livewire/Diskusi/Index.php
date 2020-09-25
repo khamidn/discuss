@@ -13,24 +13,11 @@ class Index extends Component
 
     public $topic;
     public $content;
-    public $search;
     public $fields = 0;
     public $images;
 
     public $photo = [];
 
-    protected $updatesQueryString = ['search', 'topic'];
-
-    public function updatingSearch()
-    {
-        $this->topic = '';
-    }
-    public function mount()
-    {
-        $this->images = [];
-        $this->search = request('search');
-        
-    }
     public function handleAddField()
     {
         $this->fields+=1;
@@ -45,11 +32,7 @@ class Index extends Component
     {
         $discussions = Discussion::query()->whereNull('parent_id');
 
-        if ($this->search !== null) {
-    		$discussions->where('content', 'like', '%'.$this->search. '%');
-    	}
-
-        if ($this->topic !=null ) {
+        if ($this->topic !== null ) {
             $discussions->where('topic_id', $this->topic);
         }
 
