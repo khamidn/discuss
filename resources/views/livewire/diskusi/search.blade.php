@@ -10,9 +10,9 @@
     </div>
 
     @if( !empty($search) )
-        @forelse($discussions as $discussion)
-        <div class="w-full md:w-12/12">
-            <div class="py-2">
+        @forelse($searchDiscussions as $discussion)
+        <div class="w-full md:w-12/12 ">
+            <div class="mt-2">
                 <div class="bg-white mt-2 px-2 py-2 rounded-lg border border-gray-300">
                     <div class="text-gray-500 text-sm">
                         <p>{{ $discussion->created_at->diffForHumans() }} . {{ $discussion->topic->name }}</p>
@@ -45,6 +45,12 @@
             </div>
         </div>
         @endforelse
+
+        <div class="w-full md:w-12/12">
+            {{ $searchDiscussions->links('vendor.pagination.tailwind-2') }}
+        </div>
     @endif
+
+    
 
 </div>

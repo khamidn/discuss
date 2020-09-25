@@ -2,33 +2,37 @@
 
 namespace App\Http\Livewire\Diskusi;
 
-use Livewire\Component;
 use App\Models\Discussion;
+use Livewire\{ Component, WithPagination };
+use Illuminate\Pagination\Paginator;
 
 class Search extends Component
 {
-
+    use WithPagination;
     public $search;
-    public $discussions;
+    protected $searchDiscussions;
+    
 
-    protected $updatesQueryString = ['search'];
-
-    public function mount()
+    public function updatingSearch()
     {
-        $this->search = request('search');
+        $this->resetPage();
     }
 
     public function render()
     {
         if(!empty($this->search)) {
-            $this->discussions = Discussion::where('content', 'like', '%'.$this->search.'%')
+            $this->searchDiscussions= Discussion::query()
+                                        ->when($this->search, function($query) {
+                                            return $query->where('content', 'like', '%'.$this->search.'%');
+                                        })
                                         ->whereNull('parent_id')
                                         ->with('user')
                                         ->with('topic')
-                                        ->take(3)
-                                        ->get();
+                                        ->paginate(3);
         }
         
-        return view('livewire.diskusi.search');
+        return view('livewire.diskusi.search', [
+            'searchDiscussions' => $this->searchDiscussions
+        ]);
     }
 }
