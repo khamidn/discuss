@@ -181,9 +181,3 @@
 
 </section>
 
-<script>
-
-
-
-</script>
-
